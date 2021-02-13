@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Heading from "./Header";
+import Heading from "./Heading";
 import Topic from "./Topic";
-import SidePanel from "./Sidepanel";
+import SidePanel from "./SidePanel";
 import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
@@ -27,6 +27,7 @@ categoryList(){
   return this.state.categories.map((currentCategory) => {
     return (
         <Topic
+          key={currentCategory.id}
           category={currentCategory}
         />
     );
@@ -38,15 +39,12 @@ categoryList(){
     return (
       <div>
         <Heading></Heading>
-        {/* <Topics></Topics> */}
         <Container fluid>
           <Row>
             <Col sm id="sidebar=wrapper">
               <SidePanel />
             </Col>
-            <Col>
             {this.categoryList()}
-            </Col>
           </Row>
         </Container>
       </div>

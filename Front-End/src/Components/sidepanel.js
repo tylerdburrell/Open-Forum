@@ -1,16 +1,44 @@
-import React from "react";
+import React, {Component} from "react";
 import Nav from "react-bootstrap/Nav";
-import "../styles.css";
+import "./SidePanel.css";
+import axios from "axios";
+import SidePanelLink from "./SidePanelLink";
 
-export default function SidePanel () {
+export default class Sidepanel extends Component {
+  constructor(props){
+    super(props);
 
-return(
-  <Nav defaultActiveKey="/home" className="flex-column color-sidebar sidebar">
-    <Nav.Link className="sidebar-link" href="/home">Home</Nav.Link>
-    <Nav.Link className="sidebar-link" href="/sports">Sports</Nav.Link>
-    <Nav.Link className="sidebar-link" href="/education">Education</Nav.Link>
-    <Nav.Link className="sidebar-link" href="/gaming">Gaming</Nav.Link>
-    <Nav.Link className="sidebar-link" href="/tvshows">TV Shows </Nav.Link>
-  </Nav>
-);
+    this.state = {categories: []};
+  }
+
+componentDidMount(){
+axios.get("http://localhost:8080/Category")
+    .then(response => {
+        this.setState({categories: response.data})
+        console.log(response.data)
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+}
+
+categoryList(){
+  return this.state.categories.map((currentCategory) => {
+    return (
+        <SidePanelLink
+          key={currentCategory.id}
+          category={currentCategory}
+        />
+    );
+  })
+}
+
+render(){
+  return(
+    <Nav defaultActiveKey="/home" className="flex-column color-sidebar sidebar">
+      {this.categoryList()}
+    </Nav>
+  );
+}
+
 }
