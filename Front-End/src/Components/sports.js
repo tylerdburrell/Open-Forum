@@ -1,7 +1,7 @@
 import React from "react";
-import Heading from "./header";
-import PostEntry from "./postEntry";
-import Pages from "./pages";
+import Heading from "./Header";
+import PostEntry from "./PostEntry";
+import Pages from "./Pages";
 
 export default function Sports() {
   return (

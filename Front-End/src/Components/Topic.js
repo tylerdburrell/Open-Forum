@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-export default function Topics(props) {
+export default function Topic(props) {
   return (
     <Card border="dark" className="topics-wrapper">
       <Card.Link href={props.category.slashTitle}>
