@@ -19,6 +19,7 @@ public class ForumApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/Category").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/Post").allowedOrigins("http://localhost:3000");
 			}
 		};
 	}
