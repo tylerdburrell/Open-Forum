@@ -4,6 +4,6 @@ import "./SidePanelLink.css";
 
 export default function SidePanelLink(props) {
   return (
-    <Nav.Link className="sidebar-link" href={props.category.slashTitle}>{props.category.title}</Nav.Link>
+    <Nav.Link className="sidebar-link" href={'category/'+props.category.id}>{props.category.title}</Nav.Link>
   );
 }

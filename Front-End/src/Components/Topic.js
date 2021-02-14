@@ -7,7 +7,7 @@ export default function Topic(props) {
   return (
     <Col>
       <Card border="dark" className="topics-wrapper">
-        <Card.Link href={props.category.slashTitle}>
+        <Card.Link href={'category/'+props.category.id}>
           <Card.Img variant="top" src={props.category.imageURL} />
           <Card.Body>
             <Card.Title>{props.category.title}</Card.Title>
