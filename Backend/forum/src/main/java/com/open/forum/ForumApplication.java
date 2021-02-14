@@ -2,7 +2,7 @@ package com.open.forum;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,15 +13,20 @@ public class ForumApplication {
 		SpringApplication.run(ForumApplication.class, args);
 	}
 	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/Category").allowedOrigins("http://localhost:3000");
-				registry.addMapping("/Post").allowedOrigins("http://localhost:3000");
-			}
-		};
+	@Configuration
+	public class CorsConfig implements WebMvcConfigurer {
+
+	    @Override
+	    public void addCorsMappings(CorsRegistry registry) {
+
+	        registry.addMapping("/**")
+	                .allowedOrigins(
+	                        "http://localhost:3000")
+	                .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
+	                .allowCredentials(true)
+	        ;
+	    }
+
 	}
 
 }
