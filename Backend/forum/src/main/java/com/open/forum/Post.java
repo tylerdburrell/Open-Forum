@@ -14,13 +14,15 @@ public class Post {
 	private String category;
 	private String title;
 	private String content;
+	private String date;
 	
 	Post() {}
 	
-	public Post(String category, String title, String content) {
+	public Post(String category, String title, String content, String date) {
 		this.category = category;
 		this.title = title;
 		this.content = content;
+		this.date = date;
 	}
 
 	public Long getId() {
@@ -46,6 +48,12 @@ public class Post {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }
