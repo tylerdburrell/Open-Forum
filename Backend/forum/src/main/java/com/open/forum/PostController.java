@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -25,8 +27,9 @@ class PostController {
   // Aggregate root
   // tag::get-aggregate-root[]
   @GetMapping("/Posts")
-  List<Post> all() {
-    return repository.findAll();
+  @ResponseBody
+  List<Post> all(@RequestParam String category) {
+    return repository.findByCategory(category);
   }
   // end::get-aggregate-root[]
 
