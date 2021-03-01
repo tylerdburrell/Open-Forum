@@ -57,6 +57,7 @@ export default class PostEntry extends Component {
             category: this.state.categories.title,
             title: this.state.title,
             content: this.state.content,
+            date: Date().toLocaleString()
         }
 
         axios.post("http://localhost:8080/Posts", post)
